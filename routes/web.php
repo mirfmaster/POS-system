@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-	return view('welcome');
+	return view('auth.login');
 });
 
 Auth::routes();
@@ -22,6 +22,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
+	Route::get('penjualan/receipt/{id}', 'PenjualanController@receipt')->name('receipt');
+	Route::get('laporan/pembelian', 'PembelianController@laporan')->name('laporanpembelian');
+	Route::get('laporan/penjualan', 'PenjualanController@laporan')->name('laporanpenjualan');
+
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
@@ -31,6 +35,8 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('sukucadang', 'SukucadangController');
 	Route::resource('pembelian', 'PembelianController');
 	Route::resource('penjualan', 'PenjualanController');
+	Route::resource('returpembelian', 'ReturPembelianController');
+	Route::resource('returpenjualan', 'ReturPenjualanController');
 });
 
 Route::group(['middleware' => 'auth'], function () {

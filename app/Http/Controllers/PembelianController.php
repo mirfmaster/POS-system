@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pembelian;
+use App\PembelianDetail;
 use App\Sukucadang;
 use App\Supplier;
 use Illuminate\Http\Request;
@@ -16,13 +17,10 @@ class PembelianController extends Controller
      */
     public function index()
     {
-        $suppliers = Supplier::all();
-        $sukucadangs = Sukucadang::all();
+        $data = Pembelian::with(['details.returpembelian', 'details.sukucadang', 'supplier'])->get();
+        $type = "pembelian";
 
-        $randOne = $this->random(14);
-        $randTwo = $this->random(14);
-
-        return view('pages.pembelian.form', compact(['suppliers', 'sukucadangs', 'randOne', 'randTwo']));
+        return view('pages.pembelian.index', compact(['data', 'type']));
     }
 
     public static function random($length)
@@ -37,7 +35,13 @@ class PembelianController extends Controller
      */
     public function create()
     {
-        //
+        $suppliers = Supplier::all();
+        $sukucadangs = Sukucadang::all();
+
+        $randOne = $this->random(14);
+        $randTwo = $this->random(14);
+
+        return view('pages.pembelian.form', compact(['suppliers', 'sukucadangs', 'randOne', 'randTwo']));
     }
 
     /**
@@ -49,8 +53,8 @@ class PembelianController extends Controller
     public function store(Request $request)
     {
         $data = [];
-        for ($i = 0; $i < count($request->nama); $i++) {
-            array_push($data, ["nama" => $request->nama[$i], "harga_jual" => $request->harga_jual[$i], "harga_beli" => $request->harga_beli[$i], "total" => $request->total[$i], "jumlah" => $request->jumlah[$i]]);
+        for ($i = 0; $i < count($request->sukucadang_id); $i++) {
+            array_push($data, ["sukucadang_id" => $request->sukucadang_id[$i], "harga_jual" => $request->harga_jual[$i], "harga_beli" => $request->harga_beli[$i], "total" => $request->total[$i], "jumlah" => $request->jumlah[$i]]);
         }
 
         $pembelian = new Pembelian;
@@ -65,18 +69,21 @@ class PembelianController extends Controller
 
         if ($pembelian->save()) {
             foreach ($data as $item) {
-                $sukucadang = new Sukucadang();
-                $sukucadang->nama = $item['nama'];
-                $sukucadang->jumlah = $item['jumlah'];
-                $sukucadang->harga_beli = $item['harga_beli'];
-                $sukucadang->harga_jual = $item['harga_jual'];
-                $sukucadang->total = $item['total'];
-                $sukucadang->pembelian_id = $pembelian->id;
-
+                $details = new PembelianDetail();
+                $details->sukucadang_id = $item['sukucadang_id'];
+                $details->jumlah = $item['jumlah'];
+                $details->harga_beli = $item['harga_beli'];
+                $details->harga_jual = $item['harga_jual'];
+                $details->total = $item['total'];
+                $details->pembelian_id = $pembelian->id;
+                $sukucadang = Sukucadang::find($item['sukucadang_id']);
+                $sukucadang->stock = $sukucadang->stock + $item['jumlah'];
                 $sukucadang->save();
+
+                $details->save();
             }
 
-            return redirect()->back()->withStatus('success');
+            return redirect()->back()->withMessage('Pembelian Sukses. Stock berhasil di tambahkan!');
         }
     }
 
@@ -123,5 +130,13 @@ class PembelianController extends Controller
     public function destroy(Pembelian $pembelian)
     {
         //
+    }
+
+    public function laporan()
+    {
+        $data = Pembelian::with(['details.returpembelian', 'details.sukucadang', 'supplier'])->get();
+        $type = "laporanpembelian";
+
+        return view('pages.pembelian.index', compact(['data', 'type']));
     }
 }

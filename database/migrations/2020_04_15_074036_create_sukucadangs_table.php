@@ -16,12 +16,10 @@ class CreateSukucadangsTable extends Migration
         Schema::create('sukucadangs', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('jumlah');
-            $table->integer('harga_beli');
+            $table->string('jenis');
+            $table->string('satuan');
             $table->integer('harga_jual');
-            $table->integer('total');
-            $table->unsignedBigInteger('pembelian_id');
-            $table->foreign('pembelian_id')->references('id')->on('pembelians');
+            $table->integer('stock')->default(0);
             $table->timestamps();
         });
     }

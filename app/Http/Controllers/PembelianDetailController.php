@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Pembelian_detail;
+use App\PembelianDetail;
 use Illuminate\Http\Request;
 
 class PembelianDetailController extends Controller
@@ -41,10 +41,10 @@ class PembelianDetailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Pembelian_detail  $pembelian_detail
+     * @param  \App\PembelianDetail  $pembelianDetail
      * @return \Illuminate\Http\Response
      */
-    public function show(Pembelian_detail $pembelian_detail)
+    public function show(PembelianDetail $pembelianDetail)
     {
         //
     }
@@ -52,10 +52,10 @@ class PembelianDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Pembelian_detail  $pembelian_detail
+     * @param  \App\PembelianDetail  $pembelianDetail
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pembelian_detail $pembelian_detail)
+    public function edit(PembelianDetail $pembelianDetail)
     {
         //
     }
@@ -64,10 +64,10 @@ class PembelianDetailController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Pembelian_detail  $pembelian_detail
+     * @param  \App\PembelianDetail  $pembelianDetail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pembelian_detail $pembelian_detail)
+    public function update(Request $request, PembelianDetail $pembelianDetail)
     {
         //
     }
@@ -75,10 +75,10 @@ class PembelianDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Pembelian_detail  $pembelian_detail
+     * @param  \App\PembelianDetail  $pembelianDetail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pembelian_detail $pembelian_detail)
+    public function destroy(PembelianDetail $pembelianDetail)
     {
         //
     }

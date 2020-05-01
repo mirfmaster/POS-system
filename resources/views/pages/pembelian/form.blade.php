@@ -1,5 +1,5 @@
 @extends('layouts.app', [
-'elementActive' => 'supplier'
+'elementActive' => 'pembelian'
 ])
 
 
@@ -62,13 +62,19 @@
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label> Nama Suku Cadang </label>
-                                            <input type="text" name="nama[]" class="form-control" required>
+                                            <select name="sukucadang_id[]" id="sukucadang1" class="form-control" required onchange="handleSukucadang(this, 1)">
+                                                <option value="">Pilih Sukucadang</option>
+                                                @foreach($sukucadangs as $sukucadang)
+                                                <option value="{{ $sukucadang->id }}">{{ $sukucadang->nama }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="form-group">
                                             <label> Harga Jual </label>
-                                            <input type="text" name="harga_jual[]" onkeypress="validate(event)" class="form-control" required>
+
+                                            <input type="text" id="harga_jual1" readonly name="harga_jual[]" onkeypress="validate(event)" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-2">
@@ -114,6 +120,12 @@
 @push('scripts')
 <script type="text/javascript">
     let items = 1;
+    const sukucadang = @json($sukucadangs);
+
+    const handleSukucadang = (evt, key) => {
+        let filter = sukucadang.find((items) => items.id == evt.value)
+        $('#harga_jual' + key).prop('readonly', false).val(filter.harga_jual || 0).prop('readonly', true);
+    }
 
     const addItem = () => {
         // items = items++;
@@ -123,13 +135,18 @@
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label> Nama Suku Cadang </label>
-                                            <input type="text" name="nama[]" class="form-control" required>
+                                            <select name="sukucadang_id[]" id="sukucadang${items}" class="form-control" required onchange="handleSukucadang(this, ${items})">
+                                                <option value="">Pilih Sukucadang</option>
+                                                @foreach($sukucadangs as $sukucadang)
+                                                <option value="{{ $sukucadang->id }}">{{ $sukucadang->nama }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                         <div class="form-group">
                                             <label> Harga Jual </label>
-                                            <input type="text" name="harga_jual[]" onkeypress="validate(event)" class="form-control" required>
+                                            <input type="text" id="harga_jual${items}" readonly name="harga_jual[]" onkeypress="validate(event)" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-2">

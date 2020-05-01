@@ -28,7 +28,7 @@
                             <tr>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Jenis Suku Cadang</th>
-                                <th scope="col">Jumlah</th>
+                                <th scope="col">Stock</th>
                                 <th scope="col">Satuan</th>
                                 <th scope="col">Harga Jual</th>
                                 <th scope="col">Actions</th>
@@ -39,7 +39,7 @@
                             <tr>
                                 <td>{{ $sukucadang->nama }}</td>
                                 <td>{{ $sukucadang->jenis }}</td>
-                                <td>{{ $sukucadang->jumlah }}</td>
+                                <td>{{ $sukucadang->stock }}</td>
                                 <td>{{ $sukucadang->satuan }}</td>
                                 <td>Rp. {{ $sukucadang->harga_jual }}</td>
                                 <td>

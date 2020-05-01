@@ -40,7 +40,7 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         if (Customer::create($request->except(['_token']))) {
-            return redirect()->route('customer.index');
+            return redirect()->route('customer.index')->withMessage('Request successfully executed.');
         }
     }
 
@@ -80,7 +80,7 @@ class CustomerController extends Controller
         $customer->telp = $request->telp;
         $customer->save();
 
-        return redirect()->route('customer.index');
+        return redirect()->route('customer.index')->withNotif(['type' => 'primary', 'message' => 'Request successfully executed.']);
     }
 
     /**

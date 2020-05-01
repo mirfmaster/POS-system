@@ -34,10 +34,6 @@
                             <input type="text" name="jenis" class="form-control" placeholder="Masukan Jenis Suku Cadang" value="{{ $data->jenis }}">
                         </div>
                         <div class="form-group">
-                            <label>Jumlah</label>
-                            <input type="number" min="0" name="jumlah" class="form-control" placeholder="Masukan Jumlah" value="{{ $data->jumlah }}">
-                        </div>
-                        <div class="form-group">
                             <label>Satuan</label>
                             <input type="text" name="satuan" class="form-control" placeholder="Masukan Satuan" value="{{ $data->satuan }}">
                         </div>

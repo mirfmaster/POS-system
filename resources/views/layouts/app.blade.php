@@ -76,7 +76,6 @@
                             console.log(data);
                         }
                     });
-
                 },
                 allowOutsideClick: () => !Swal.isLoading()
             }).then((result) => {

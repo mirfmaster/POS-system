@@ -4,15 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PenjualanDetail extends Model
+class PembelianDetail extends Model
 {
     public function sukucadang()
     {
         return $this->belongsTo(Sukucadang::class);
     }
 
-    public function returpenjualan()
+    public function returpembelian()
     {
-        return $this->hasMany(ReturPenjualan::class);
+        return $this->hasMany(ReturPembelian::class);
     }
 }
