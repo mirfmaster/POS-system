@@ -22,7 +22,7 @@ class PenjualanController extends Controller
         $data = Penjualan::with(['details.returpenjualan', 'details.sukucadang', 'customer'])->get();
         $type = 'penjualan';
 
-        return view('pages.penjualan.index', compact(['data', 'penjualan']));
+        return view('pages.penjualan.index', compact(['data', 'type']));
     }
 
     /**

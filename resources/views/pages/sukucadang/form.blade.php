@@ -26,20 +26,24 @@
                         @method('patch')
                         @endif
                         <div class="form-group">
-                            <label>Nama</label>
-                            <input type="text" name="nama" class="form-control" placeholder="Masukan Nama" value="{{ $data->nama }}">
+                            <label>No. Parts</label>
+                            <input type="text" name="nama" class="form-control" placeholder="Masukan No. Parts"
+                                value="{{ $data->nama }}">
                         </div>
                         <div class="form-group">
                             <label>Jenis</label>
-                            <input type="text" name="jenis" class="form-control" placeholder="Masukan Jenis Suku Cadang" value="{{ $data->jenis }}">
+                            <input type="text" name="jenis" class="form-control" placeholder="Masukan Jenis Suku Cadang"
+                                value="{{ $data->jenis }}">
                         </div>
                         <div class="form-group">
                             <label>Satuan</label>
-                            <input type="text" name="satuan" class="form-control" placeholder="Masukan Satuan" value="{{ $data->satuan }}">
+                            <input type="text" name="satuan" class="form-control" placeholder="Masukan Satuan"
+                                value="{{ $data->satuan }}">
                         </div>
                         <div class="form-group">
                             <label>Harga Jual</label>
-                            <input type="number" name="harga_jual" class="form-control" placeholder="Masukan Harga Jual" value="{{ $data->harga_jual }}">
+                            <input type="number" name="harga_jual" class="form-control" placeholder="Masukan Harga Jual"
+                                value="{{ $data->harga_jual }}">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>

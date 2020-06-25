@@ -14,7 +14,8 @@
                             <h3 class="mb-0">Suku Cadang</h3>
                         </div>
                         <div class="col-4 text-right">
-                            <a href="{{ route('sukucadang.create') }}" class="btn btn-sm btn-primary">Add Suku Cadang</a>
+                            <a href="{{ route('sukucadang.create') }}" class="btn btn-sm btn-primary">Add Suku
+                                Cadang</a>
                         </div>
                     </div>
                 </div>
@@ -26,7 +27,7 @@
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">
                             <tr>
-                                <th scope="col">Nama</th>
+                                <th scope="col">No. Parts</th>
                                 <th scope="col">Jenis Suku Cadang</th>
                                 <th scope="col">Stock</th>
                                 <th scope="col">Satuan</th>
@@ -48,7 +49,8 @@
                                             <i class="nc-icon nc-settings text-warning"></i>
                                         </button>
                                     </a>
-                                    <button type="submit" class="btn" style="padding: 5px 6px;font-size:1.7rem" onclick="del(`{{ url('sukucadang') }}`, {{$sukucadang->id}} )">
+                                    <button type="submit" class="btn" style="padding: 5px 6px;font-size:1.7rem"
+                                        onclick="del(`{{ url('sukucadang') }}`, {{$sukucadang->id}} )">
                                         <i class="nc-icon nc-simple-remove text-danger"></i>
                                     </button>
                                 </td>

@@ -6,6 +6,7 @@ use App\Pembelian;
 use App\PembelianDetail;
 use App\Sukucadang;
 use App\Supplier;
+use PDF;
 use Illuminate\Http\Request;
 
 class PembelianController extends Controller
@@ -138,5 +139,14 @@ class PembelianController extends Controller
         $type = "laporanpembelian";
 
         return view('pages.pembelian.index', compact(['data', 'type']));
+    }
+
+    public function cetakLaporan()
+    {
+        $data = Pembelian::with(['details.returpembelian', 'details.sukucadang', 'supplier'])->get();
+        $type = 'Pembelian';
+        $pdf = PDF::loadView('pdf.receipt', compact(['data', 'type']));
+
+        return $pdf->stream();
     }
 }

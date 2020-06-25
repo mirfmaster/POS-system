@@ -2,7 +2,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Receipt Transaksi</title>
+    <title>Laporan {{ $type }}</title>
 
 <body>
     <style type="text/css">
@@ -65,52 +65,31 @@
         }
     </style>
 
-    <div style="font-family:Arial; font-size:12px;">
-        <table>
-            <tr>
-                <td width="120">No Faktur</td>
-                <td width="10">:</td>
-                <td>{{ $data->no_faktur }}</td>
-            </tr>
-            <tr>
-                <td>Total Belanja</td>
-                <td width="10">:</td>
-                <td>{{ $data->total }}</td>
-            </tr>
-            <tr>
-                <td>Customer</td>
-                <td width="10">:</td>
-                <td>{{ $data->customer->nama }}</td>
-            </tr>
-            <tr>
-                <td>Petugas</td>
-                <td width="10">:</td>
-                <td>{{ $data->user->nama }}</td>
-            </tr>
-            <tr>
-                <td>Tanggal Transaksi</td>
-                <td width="10">:</td>
-                <td>{{ $data->created_at }}</td>
-            </tr>
-        </table>
-    </div>
-    <br>
     <table class="tg" style="width:80%;margin-left:auto;margin-right:auto">
         <thead>
             <tr>
-                <th class="tg-3wr7">Nama Sukucadang</th>
-                <th class="tg-3wr7">Harga</th>
-                <th class="tg-3wr7">Jumlah</th>
+                <th class="tg-3wr7">Supplier Name</th>
+                <th class="tg-3wr7">No. Faktur</th>
+                <th class="tg-3wr7">Metode Bayar</th>
+                <th class="tg-3wr7">Detail Barang</th>
                 <th class="tg-3wr7">Total</th>
+                <th class="tg-3wr7">Jumlah</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($data->details as $detail)
+            @foreach($data as $pembelian)
             <tr>
-                <td>{{$detail->sukucadang->nama}}</td>
-                <td>{{$detail->harga_jual}}</td>
-                <td>{{$detail->jumlah}}</td>
-                <td>{{$detail->total}}</td>
+                <td>{{$pembelian->supplier->nama}}</td>
+                <td>{{$pembelian->no_faktur}}</td>
+                <td>{{$pembelian->total}}</td>
+                <td>{{$pembelian->metode_bayar}}</td>total
+                <td>
+                    @foreach ($pembelian->details as $detail)
+                    {{ $detail->sukucadang->nama . ": ". $detail->jumlah }}
+                    @endforeach
+                </td>
+                <td>{{$pembelian->total}}</td>
+                <td>{{$pembelian->jumlah}}</td>
             <tr>
                 @endforeach
         </tbody>
