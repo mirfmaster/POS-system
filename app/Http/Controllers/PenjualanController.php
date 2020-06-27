@@ -140,4 +140,12 @@ class PenjualanController extends Controller
 
         return view('pages.penjualan.index', compact(['data', 'type']));
     }
+
+    public function cetakLaporan()
+    {
+        $data = Penjualan::with(['details.returpenjualan', 'details.sukucadang', 'customer'])->get();
+        $pdf = PDF::loadView('pdf.laporanpengeluaran', compact(['data']));
+
+        return $pdf->stream();
+    }
 }

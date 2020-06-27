@@ -17,6 +17,10 @@
                             @if($type == 'penjualan')
                             <a href="{{ route('penjualan.create') }}" class="btn btn-sm btn-primary">Add penjualan</a>
                             @endif
+                            @if($type == 'laporanpenjualan')
+                            <a href="{{ url('laporan/penjualan/cetak') }}" class="btn btn-sm btn-primary">Cetak
+                                Laporan</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -42,11 +46,13 @@
                                 <td>{{ $penjualan->customer->nama }}</td>
                                 <td>{{ $penjualan->customer->telp }}</td>
                                 <td>
-                                    <button type="submit" class="btn" style="padding: 5px 6px;font-size:1.7rem" title="Details" onclick="handleDetail({{$penjualan}})">
+                                    <button type="submit" class="btn" style="padding: 5px 6px;font-size:1.7rem"
+                                        title="Details" onclick="handleDetail({{$penjualan}})">
                                         <i class="nc-icon nc-bullet-list-67 text-warning"></i>
                                     </button>
                                     @if($type == 'penjualan')
-                                    <button type="submit" class="btn" style="padding: 5px 6px;font-size:1.7rem" onclick="handleRetur({{$penjualan}})">
+                                    <button type="submit" class="btn" style="padding: 5px 6px;font-size:1.7rem"
+                                        onclick="handleRetur({{$penjualan}})">
                                         <i class="nc-icon nc-box-2 text-danger"></i>
                                     </button>
                                     @endif
@@ -62,7 +68,8 @@
 </div>
 
 <!-- Modal Detail -->
-<div class="modal fade" id="modalDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document" style="max-width: 800px">
         <div class="modal-content">
             <div class="modal-header">
@@ -115,7 +122,8 @@
 </div>
 
 <!-- Modal Retur -->
-<div class="modal fade" id="modalRetur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalRetur" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document" style="max-width:800px">
         <div class="modal-content">
             <div class="modal-header">
