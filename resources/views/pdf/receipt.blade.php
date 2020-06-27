@@ -82,6 +82,7 @@
         <thead>
             <tr>
                 <th class="tg-3wr7">Supplier Name</th>
+                <th class="tg-3wr7">Nama Petugas</th>
                 <th class="tg-3wr7">No. Faktur</th>
                 <th class="tg-3wr7">Metode Bayar</th>
                 <th class="tg-3wr7">Detail Barang</th>
@@ -92,6 +93,7 @@
             @foreach($data as $pembelian)
             <tr>
                 <td>{{$pembelian->supplier->nama}}</td>
+                <td>{{$pembelian->user->name}}</td>
                 <td>{{$pembelian->no_faktur}}</td>
                 <td>{{$pembelian->metode_bayar}}</td>
                 <td>

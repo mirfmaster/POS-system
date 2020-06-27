@@ -135,7 +135,7 @@ class PembelianController extends Controller
 
     public function laporan()
     {
-        $data = Pembelian::with(['details.returpembelian', 'details.sukucadang', 'supplier'])->get();
+        $data = Pembelian::with(['details.returpembelian', 'details.sukucadang', 'supplier', 'user'])->get();
         $type = "laporanpembelian";
 
         return view('pages.pembelian.index', compact(['data', 'type']));
@@ -143,7 +143,7 @@ class PembelianController extends Controller
 
     public function cetakLaporan()
     {
-        $data = Pembelian::with(['details.returpembelian', 'details.sukucadang', 'supplier'])->get();
+        $data = Pembelian::with(['details.returpembelian', 'details.sukucadang', 'supplier', 'user'])->get();
         $type = 'Pembelian';
         $pdf = PDF::loadView('pdf.receipt', compact(['data', 'type']));
 
