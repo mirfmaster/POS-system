@@ -65,7 +65,20 @@
         }
     </style>
 
-    <table class="tg" style="width:80%;margin-left:auto;margin-right:auto">
+    <table style="width: 100%">
+        <tr>
+            <td style="width: 20%"><img src="{{ public_path('logo-honda.png') }}" style="height:100px;" alt=""
+                    srcset=""></td>
+            <td style="text-align: center">
+                AHASS 10053 - PT. BARENO TIGA BERSAUDARA <br>
+                Jl. RC Veteran No. 555 Ruko B - C Bintaro <br>
+                Pesanggrahan, Jakarta Selatan Telp. (021) 7375343
+            </td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <table class="tg">
         <thead>
             <tr>
                 <th class="tg-3wr7">Supplier Name</th>
@@ -73,7 +86,6 @@
                 <th class="tg-3wr7">Metode Bayar</th>
                 <th class="tg-3wr7">Detail Barang</th>
                 <th class="tg-3wr7">Total</th>
-                <th class="tg-3wr7">Jumlah</th>
             </tr>
         </thead>
         <tbody>
@@ -81,20 +93,17 @@
             <tr>
                 <td>{{$pembelian->supplier->nama}}</td>
                 <td>{{$pembelian->no_faktur}}</td>
-                <td>{{$pembelian->total}}</td>
-                <td>{{$pembelian->metode_bayar}}</td>total
+                <td>{{$pembelian->metode_bayar}}</td>
                 <td>
                     @foreach ($pembelian->details as $detail)
                     {{ $detail->sukucadang->nama . ": ". $detail->jumlah }}
                     @endforeach
                 </td>
                 <td>{{$pembelian->total}}</td>
-                <td>{{$pembelian->jumlah}}</td>
-            <tr>
-                @endforeach
+            </tr>
+            @endforeach
         </tbody>
     </table>
-    <div class="page-break"></div>
 </body>
 </head>
 
