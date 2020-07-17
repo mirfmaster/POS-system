@@ -21,7 +21,7 @@ $userLevel = auth()->user()->level;
                 </a>
             </li>
 
-            @if($userLevel != 'kasir')
+            @if($userLevel != 'kasir' || $userLevel != 'partman')
             <li class="{{ $elementActive == 'pembelian' ? 'active' : '' }}">
                 <a href="{{ route('pembelian.index') }}">
                     <i class="nc-icon nc-bank"></i>
@@ -37,7 +37,8 @@ $userLevel = auth()->user()->level;
                 </a>
             </li>
             @endif
-            <li class="{{ $elementActive == 'laporanpembelian' || $elementActive == 'laporanpenjualan' ? 'active' : '' }}">
+            <li
+                class="{{ $elementActive == 'laporanpembelian' || $elementActive == 'laporanpenjualan' ? 'active' : '' }}">
                 <a data-toggle="collapse" aria-expanded="true" href="#laporan">
                     <i class="nc-icon"><img src="{{ asset('paper/img/laravel.svg') }}"></i>
                     <p>
@@ -62,7 +63,8 @@ $userLevel = auth()->user()->level;
                     </ul>
                 </div>
             </li>
-            <li class="{{ $elementActive == 'customer' || $elementActive == 'supplier' ||$elementActive == 'sukucadang' ? 'active' : '' }}">
+            <li
+                class="{{ $elementActive == 'customer' || $elementActive == 'supplier' ||$elementActive == 'sukucadang' ? 'active' : '' }}">
                 <a data-toggle="collapse" aria-expanded="true" href="#masterData">
                     <i class="nc-icon"><img src="{{ asset('paper/img/laravel.svg') }}"></i>
                     <p>
@@ -72,7 +74,7 @@ $userLevel = auth()->user()->level;
                 </a>
                 <div class="collapse" id="masterData">
                     <ul class="nav">
-                        @if($userLevel != 'kasir')
+                        @if($userLevel != 'kasir' || $userLevel != 'partman')
                         <li class="{{ $elementActive == 'supplier' ? 'active' : '' }}">
                             <a href="{{ route('supplier.index', 'user') }}">
                                 <span class="sidebar-mini-icon">{{ __('S') }}</span>

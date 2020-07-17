@@ -18,6 +18,9 @@ class CreateCustomersTable extends Migration
             $table->string('nama');
             $table->string('alamat');
             $table->string('telp');
+            $table->string('nopol');
+            $table->string('norangka');
+            $table->string('nomesin');
             $table->timestamps();
         });
     }

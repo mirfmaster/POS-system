@@ -27,15 +27,33 @@
                         @endif
                         <div class="form-group">
                             <label>Nama</label>
-                            <input type="text" name="nama" class="form-control" placeholder="Masukan Nama" value="{{ $data->nama }}">
+                            <input type="text" name="nama" class="form-control" placeholder="Masukan Nama"
+                                value="{{ $data->nama }}">
                         </div>
                         <div class="form-group">
                             <label>Alamat</label>
-                            <input type="text" name="alamat" class="form-control" placeholder="Masukan Alamat" value="{{ $data->alamat }}">
+                            <input type="text" name="alamat" class="form-control" placeholder="Masukan Alamat"
+                                value="{{ $data->alamat }}">
                         </div>
                         <div class="form-group">
                             <label>Nomor Telpon</label>
-                            <input type="number" name="telp" class="form-control" placeholder="Masukan Nomor Telpon" value="{{ $data->telp }}">
+                            <input type="number" name="telp" class="form-control" placeholder="Masukan Nomor Telpon"
+                                value="{{ $data->telp }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor Polisi</label>
+                            <input type="text" name="nopol" class="form-control" placeholder="Masukan Nomor Polisi"
+                                value="{{ $data->nopol }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor Rangka</label>
+                            <input type="text" name="norangka" class="form-control" placeholder="Masukan Nomor Rangka"
+                                value="{{ $data->norangka }}">
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor Mesin</label>
+                            <input type="text" name="nomesin" class="form-control" placeholder="Masukan Nomor Mesin"
+                                value="{{ $data->nomesin }}">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
